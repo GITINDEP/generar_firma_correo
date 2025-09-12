@@ -31,10 +31,13 @@ async function vaidateAD(){
         }
         
     } catch (error) {
-        
-    } finally{
-        spinner.style.display = 'none';
-    }
-
+                $.alert({
+                title: "Advertencia",
+                content: `<strong>${error.message}</strong>`,
+                theme: 'modern',
+                icon: 'fa-solid fa-triangle-exclamation',
+                type: "red"
+            });
+    } 
 
 }
