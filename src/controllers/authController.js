@@ -96,29 +96,34 @@ function loginAD(req, res){
                             if(usuariosAdmin.length > 0) admin = true;
 
                       const  dataFirma = await dataFirmaServices.queryDataEmp(newUser);
+                      if(dataFirma.length > 0){
+                          req.session.usuario = {
+                                                   nombre: dataFirma[0].Nombre,
+                                                   area: dataFirma[0].AreaDesc,
+                                                   puesto: dataFirma[0].PuestoDesc,
+                                                   correo: dataFirma[0].Correo,
+                                                   telefono:"55 1719 1600",
+                                                   ext: dataFirma[0].Ext,
+                                                   token:token,
+                                                   admin:admin
+                                               };
+                               res.cookie('authToken', token, {
+                                   httpOnly: true,
+                                   sameSite: 'strict',
+                                   expires: new Date(
+                                   Date.now() + process.env.COOKIE_EXPIRES * 24 * 60 * 1000
+                                   ),
+                               });
+                       console.log(dataFirma)
+    
+                       //res.redirect('/inicio');
+                       //res.cookie(process.env.APP_COOKIE_NAME,token,coockieOptions);
+                       return res.status(201).json({success: true, msg:"Inicio de Sesión Correcto", token, dataFirma});
 
-                               req.session.usuario = {
-                                                        nombre: dataFirma[0].Nombre,
-                                                        area: dataFirma[0].AreaDesc,
-                                                        puesto: dataFirma[0].PuestoDesc,
-                                                        correo: dataFirma[0].Correo,
-                                                        telefono:"55 1719 1600",
-                                                        ext: dataFirma[0].Ext,
-                                                        token:token,
-                                                        admin:admin
-                                                    };
-                                    res.cookie('authToken', token, {
-                                        httpOnly: true,
-                                        sameSite: 'strict',
-                                        expires: new Date(
-                                        Date.now() + process.env.COOKIE_EXPIRES * 24 * 60 * 1000
-                                        ),
-                                    });
-                            console.log(dataFirma)
+                      }else{
+                        return res.status(401).json({sucess:false, msg:"No hay datos que mostrar",dataerror:"authController/loginAD"})
+                      }
 
-                            //res.redirect('/inicio');
-                            //res.cookie(process.env.APP_COOKIE_NAME,token,coockieOptions);
-                            return res.status(201).json({success: true, msg:"Inicio de Sesión Correcto", token, dataFirma});
                         }else{
                             return res.status(301).json({success:false,msg:"Usuario y/o Contraseña Incorrectos",dataerror:"authController/loginAD"});
                         }
