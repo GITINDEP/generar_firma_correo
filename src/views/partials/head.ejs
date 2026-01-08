@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/login.css" />
+    <!-- <link rel="stylesheet" href="./assets/css/output.css"> -->
     <!--JS-->
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -22,13 +23,46 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
-<div class="container_logo_gob_mx">
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container d-flex justify-content-around">
+    <a class="navbar-brand" href="#">
+        <img src="./assets/img/Firma SHCP_INDEP.png" alt="logo_indep" width="30%">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <%=usuario.correo%>
+          </a>
+          <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/inicio">Firma</a></li>
+            <%if(usuario.admin){%> 
+                <li><a class="dropdown-item" href="/configuracion">Configuraciones</a></li>
+            <%}%>
+            <hr>
+            <li><a class="dropdown-item" href="/logout">Cerrar Sesión</a></li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- <div class="container_logo_gob_mx">
     <img src="./assets/img/logo_gob_mx.png" alt="logo_gobierno_mx">
 </div>
 
-<div class="container_logo_hacienda_indep">
+ -->
+
+<!-- <div class="w-full container mx-auto">
     <img src="./assets/img/Firma SHCP_INDEP.png" alt="logo_indep">
-</div>
+</div> -->
+
 
 
 

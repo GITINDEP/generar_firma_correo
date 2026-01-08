@@ -33,7 +33,23 @@ document.getElementById('puesto_comision').addEventListener('input',function(){
     if(document.getElementById('text-puesto').textContent == "") document.getElementById('text-puesto').textContent =document.getElementById('puesto_firma').value
 });
 
-document.getElementById('check_area').addEventListener('change',function(){
+ document.getElementById('puesto_firma').addEventListener('input',function(){
+    document.getElementById('text-puesto').textContent= this.value.toUpperCase();
+    if(document.getElementById('text-puesto').textContent == "") document.getElementById('text-puesto').textContent =document.getElementById('puesto_firma_hidden').value
+}); 
+
+
+ document.getElementById('direccion_firma').addEventListener('input',function(){
+    document.getElementById('text-direccion-gral').textContent= this.value.toUpperCase();
+    if(document.getElementById('text-direccion-gral').textContent == "") document.getElementById('text-direccion-gral').textContent =document.getElementById('direccion_firma_hidden').value
+}); 
+
+
+ document.getElementById('subdireccion_firma').addEventListener('input',function(){
+    document.getElementById('text-subdireccion').textContent= this.value.toUpperCase();
+});
+
+/* document.getElementById('check_area').addEventListener('change',function(){
     if(this.checked){
          document.getElementById('text-area').style.display = 'block';
         
@@ -41,7 +57,7 @@ document.getElementById('check_area').addEventListener('change',function(){
 
         document.getElementById('text-area').style.display = 'none'; 
     }
-});
+}); */
 
 document.getElementById('check_direccion').addEventListener('change',function(){
     if(this.checked){
@@ -96,3 +112,9 @@ function descargar(canvas){
         enlace.click()
 }
 
+
+function verModal(){
+    let modalFirma = new bootstrap.Modal(document.getElementById('modalFirma'));
+    modalFirma.show();      
+
+}

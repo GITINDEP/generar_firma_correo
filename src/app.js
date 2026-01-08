@@ -4,7 +4,7 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.APP_PORT || 3000;
 const db = require('./config/dbPostgre');
 
 const routerPrincipal= require('./routes/principal.routes');
@@ -36,7 +36,7 @@ db.sync({ force: false })
         console.log(`✅ Base de datos conectada(${process.env.PG_DB_NAME})`);
         app.listen(PORT, () => {
         console.log(`Servidor iniciado en puerto ${PORT}`);
-
+        connectDB();
     });
 })
 .catch(err => {

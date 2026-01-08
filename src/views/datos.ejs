@@ -1,55 +1,51 @@
 <%- include('partials/head') %>
 
-<div class="container-fluid shadow-lg p-3 mb-5 bg-body-tertiary rounded">
 
-
-    <div class="titulo">
-        <div class="titulo_p">
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M160-240h640v-320H520v-160H160v480Zm0 80q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm0-80v-480 480Z"/></svg>
-            Datos de la Firma
-        </div>
-        <div class="menu">
-
-                <div class="rutas">
-                    <a href="/configuracion">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m370-80-16-128q-13-5-24.5-12T307-235l-119 50L78-375l103-78q-1-7-1-13.5v-27q0-6.5 1-13.5L78-585l110-190 119 50q11-8 23-15t24-12l16-128h220l16 128q13 5 24.5 12t22.5 15l119-50 110 190-103 78q1 7 1 13.5v27q0 6.5-2 13.5l103 78-110 190-118-50q-11 8-23 15t-24 12L590-80H370Zm70-80h79l14-106q31-8 57.5-23.5T639-327l99 41 39-68-86-65q5-14 7-29.5t2-31.5q0-16-2-31.5t-7-29.5l86-65-39-68-99 42q-22-23-48.5-38.5T533-694l-13-106h-79l-14 106q-31 8-57.5 23.5T321-633l-99-41-39 68 86 64q-5 15-7 30t-2 32q0 16 2 31t7 30l-86 65 39 68 99-42q22 23 48.5 38.5T427-266l13 106Zm42-180q58 0 99-41t41-99q0-58-41-99t-99-41q-59 0-99.5 41T342-480q0 58 40.5 99t99.5 41Zm-2-140Z"/></svg>
-                        Configuraciones
-                    </a>
-                </div>
-            <div class="opciones">
-                <a href="/logout">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M200-120q-33 0-56.5-23.5T120-200v-160h80v160h560v-560H200v160h-80v-160q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm220-160-56-58 102-102H120v-80h346L364-622l56-58 200 200-200 200Z"/></svg>
-                    Cerrar Sesión
-                </a>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+            <div class="card">
+            <div class="card-header">
+                Datos del Empleado
             </div>
-        </div>
-    </div>
-
-
+            <div class="card-body">
+            <div class="alert alert-warning" role="alert">
+                <strong>Nota:</strong>: Los campos de Dirección General, Subdirección y Puesto ser editados.
+            </div>
     <form action="" class="mt-4">
         <div class="row">
-            <div class="col-sm-12 col-md-6 mb-3">
+            <div class="col-sm-12 col-md-12 mb-3">
                 <div class="form-floating">
                     <input type="text" class="form-control" id="nombre_firma" name="nombre_firma"placeholder="Nombre Completo" value="<%=usuario.nombre%>" readonly>
                     <label for="floatingPassword">Nombre Completo:</label>
                 </div>
             </div>
 
-            <div class="col-sm-12 col-md-6 mb-3">
+            <div class="col-sm-12 col-md-12 mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="area_firma" name="area_firma" placeholder="Área de Adscripción" value="<%=usuario.area%>" readonly>
-                    <label for="floatingPassword">Área de Adscripción:</label>
+                    <input type="text" class="form-control" id="direccion_firma" name="direccion_firma" placeholder="Dirección General" value="<%=usuario.area%>" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                    <input type="text" class="form-control" id="direccion_firma_hidden" name="direccion_firma_hidden" placeholder="Puesto" value="<%=usuario.area%>" readonly style="display:none;">
+                    <label for="floatingPassword">Dirección General:</label>
                 </div>
             </div>
 
-            <div class="col-sm-12 col-md-6 mb-3">
+            <div class="col-sm-12 col-md-12 mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="puesto_firma" name="puesto_firma" placeholder="Puesto" value="<%=usuario.puesto%>" readonly>
+                    <input type="text" class="form-control" id="subdireccion_firma" name="subdireccion_firma" placeholder="Subdirección" value="" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                    <label for="floatingPassword">Subdirección:</label>
+                </div>
+            </div>
+
+
+            <div class="col-sm-12 col-md-12 mb-3">
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="puesto_firma" name="puesto_firma" placeholder="Puesto" value="<%=usuario.puesto%>" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" >
+                    <input type="text" class="form-control" id="puesto_firma_hidden" name="puesto_firma_hidden" placeholder="Puesto" value="<%=usuario.puesto%>" readonly style="display:none;">
                     <label for="floatingPassword">Puesto:</label>
                 </div>
             </div>
 
-            <div class="col-sm-12 col-md-6 mb-3">
+            <div class="col-sm-12 col-md-12 mb-3">
                 <div class="form-floating">
                     <input type="text" class="form-control" id="correo_firma" name="correo_firma" placeholder="Correo Electrónico" value="<%=usuario.correo%>" readonly>
                     <label for="floatingPassword">Correo Electrónico:</label>
@@ -79,14 +75,14 @@
             </div>
             <hr>
 
-            <div class="col-sm-12 col-md-6 mb-3">
+            <div class="col-sm-12 col-md-12 mb-3">
                 <div class="form-floating">
                     <input type="text" class="form-control" id="puesto_comision" name="puesto_comision" placeholder="Puesto" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                     <label for="floatingPassword">Puesto:</label>
                 </div>
             </div>
 
-            <div class="col-sm-12 col-md-6 mb-3">
+            <div class="col-sm-12 col-md-12 mb-3">
                 <div class="form-floating">
                     <input type="text" class="form-control" id="area_comision" name="area_comision" placeholder="Área de Adscripción" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                     <label for="floatingPassword">Área de Adscripción:</label>
@@ -94,49 +90,67 @@
             </div>
         </div>
     </form>
-    <div class="row">
-        <div class="col-sm-12 col-md-6 mb-3">
-            <h3>Habilitar/Deshabilitar Opciones</h3>
-            <div class="opciones_mostrar">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="check_area" <% if(usuario.area != null){ %>checked <% } %>>
-                    <label class="form-check-label" for="check_area">
-                        Mostrar Área de Adscripción
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="check_direccion" checked>
-                    <label class="form-check-label" for="check_direccion">
-                        Mostrar Dirección
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="check_correo" <% if(usuario.correo != null){ %>checked <% } %>>
-                    <label class="form-check-label" for="check_correo">
-                       Mostrar Correo Electrónico
-                    </label>
-                </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="check_tel_ext"  <% if(usuario.telefono != null){ %>checked <% } %>>
-                        <label class="form-check-label" for="check_tel_ext">
-                        Mostrar Teléfono y Extención
-                        </label>
-                    </div>
-         
+            </div>
             </div>
         </div>
-        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-5 col-xxl-5 mb-3 vista_previa">
-            <h3>Vista Previa de la Firma</h3>
-                            
-            <button class="btn primary mt-2" type="button" onclick="descargarFirma()">
-                <div class=""><img src="/assets/img/icons/descargar.svg"></div>
-                <div class="title">DESCARGAR FIRMA</div>
-            </button>
+        <div class="col-sm-12 col-md-6">
+            <div class="card">
+            <div class="card-header">
+                Habilitar/Deshabilitar Opciones
+            </div>
+            <div class="card-body">
+            <div class="row">
+            <div class="col-sm-12 col-md-6 mb-3">
+                <div class="opciones_mostrar">
+<!--                     <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="check_area" <% if(usuario.area != null){ %>checked <% } %>>
+                        <label class="form-check-label" for="check_area">
+                            Mostrar Área de Adscripción
+                        </label>
+                    </div> -->
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="check_direccion" checked>
+                        <label class="form-check-label" for="check_direccion">
+                            Mostrar Dirección
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="check_correo" <% if(usuario.correo != null){ %>checked <% } %>>
+                        <label class="form-check-label" for="check_correo">
+                        Mostrar Correo Electrónico
+                        </label>
+                    </div>
 
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="check_tel_ext"  <% if(usuario.telefono != null){ %>checked <% } %>>
+                            <label class="form-check-label" for="check_tel_ext">
+                            Mostrar Teléfono y Extensión
+                            </label>
+                        </div>
+            
+                </div>
+            </div>
+                </div>
+            </div>
+            </div>
 
+            <div class="card mt-3">
+                <div class="card-header p-auto">
+                    Firma de Correo Electrónico Institucional
+                </div>
+                <div class="card-body">
+<!--                     <select class="form-select" aria-label="Default select example">
+                        <option selected>Seleccione una Institución</option>
+                        <option value="1">Indep</option>
+                        <option value="2">Notimex</option>
+                        <option value="3">Ferrocarriles NML</option>
+                        <option value="4">LFCL</option>
+                    </select> -->
+
+                     <img src="" alt="firma_correo_vista" width="100%" id="imagen_firma_vista">
+<!-- 
                 <div class="imageContainer" id="imageContainer">
-                   <img src="" alt="firma_correo" width="100%" id="imagen_firma">
+                   <img src="" alt="firma_correo" width="" id="imagen_firma">
                     <div class="container_datos_firma">
                         <div class="col-md-12 text-nombre" id="text-nombre">
                             <%=usuario.nombre%>
@@ -164,7 +178,7 @@
                         </div>
 
                         <div class="col-md-12 text-hacienda" id="text-hacienda">
-                            Subsecretaría de Hacienda y Crédito Público
+                            Secretaría de Hacienda y Crédito Público
                         </div>
             
                         <div class="col-md-12 text-indep" id="text-indep">
@@ -175,10 +189,80 @@
                            www.gob.mx/indep
                         </div>
                     </div>
+                </div> -->
+                <button class="btn primary mt-2" type="button" onclick="verModal();">
+                    <div class="title">VISTA PREVIA DE LA FIRMA</div>
+                </button>
                 </div>
+            </div>
         </div>
     </div>
 </div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalFirma" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Vista Previa de Firma</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+                <div class="imageContainer" id="imageContainer" width="100%">
+                   <img src="" alt="firma_correo" width="" id="imagen_firma">
+                    <div class="container_datos_firma">
+                        <div class="col-md-12 text-nombre" id="text-nombre">
+                            <%=usuario.nombre%>
+                        </div>
+                        
+                        <div class="col-md-12 text-puesto" id="text-puesto">
+                            <%=usuario.puesto%>
+                        </div>
+
+                        
+                        <div class=" col-md-12 text-direccion" id="text-direccion">
+                            Av. Insurgentes Sur 1931, Col. Guadalupe Inn, C.P. 01020, Alcaldía Álvaro Obregón, Ciudad de México.
+                        </div>
+
+                        <div class=" col-md-12 text-correo" id="text-correo">
+                            Correo Electrónico: <%=usuario.correo%>
+                        </div>
+                       
+                        <div class="col-md-12 text-telefono" id="text-telefono">
+                                Tel:01 <%=usuario.telefono%>   Ext: <%=usuario.ext%>
+                        </div>
+
+                        <div class="col-md-12 text-hacienda" id="text-hacienda">
+                            Secretaría de Hacienda y Crédito Público
+                        </div>
+            
+                        <div class=" col-md-12 text-direccion-gral" id="text-direccion-gral">
+                            <%=usuario.area%>
+                        </div>
+                         <div class="col-md-12 text-subdireccion" id="text-subdireccion">
+                            
+                        </div>
+<!--                         <div class="col-md-12 text-indep" id="text-indep">
+                            Instituto para Devolver al Pueblo lo Robado
+                        </div> -->
+            
+<!--                         <div class="col-md-12 link-indep" id="link-indep">
+                           www.gob.mx/indep
+                        </div> -->
+                    </div>
+                </div>
+                <button class="btn primary mt-2 float-end" type="button" onclick="descargarFirma()">
+                    <div class=""><img src="/assets/img/icons/descargar.svg"></div>
+                    <div class="title">DESCARGAR FIRMA</div>
+                </button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <script src="./assets/js/datosFirma.js"></script>
 <script src="./assets/js/configuracionesFirma.js"></script>

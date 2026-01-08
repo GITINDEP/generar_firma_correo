@@ -16,7 +16,7 @@ async function datosConfig(){
             }else if(config.cat_apartados_firma.apartado_firma == 'Puesto'){
                 configFirma(config.color_letra,config.estilo_letra,config.tamanio_letra,'text-puesto')
             }else if(config.cat_apartados_firma.apartado_firma == 'Área Adscripción'){
-                configFirma(config.color_letra,config.estilo_letra,config.tamanio_letra,'text-area')
+                configFirma(config.color_letra,config.estilo_letra,config.tamanio_letra,'text-direccion-gral')
             }else if(config.cat_apartados_firma.apartado_firma == 'Dirección'){
                 configFirma(config.color_letra,config.estilo_letra,config.tamanio_letra,'text-direccion')
             }else if(config.cat_apartados_firma.apartado_firma == 'Correo'){
@@ -25,11 +25,11 @@ async function datosConfig(){
                 configFirma(config.color_letra,config.estilo_letra,config.tamanio_letra,'text-telefono')
             }else if(config.cat_apartados_firma.apartado_firma == 'Texto hacienda'){
                 configFirma(config.color_letra,config.estilo_letra,config.tamanio_letra,'text-hacienda')
-            }else if(config.cat_apartados_firma.apartado_firma == 'Nombre indep'){
-                configFirma(config.color_letra,config.estilo_letra,config.tamanio_letra,'text-indep')
-            }else if(config.cat_apartados_firma.apartado_firma == 'url'){
+            }else if(config.cat_apartados_firma.apartado_firma == 'Subdirección'){
+                configFirma(config.color_letra,config.estilo_letra,config.tamanio_letra,'text-subdireccion')
+            }/* else if(config.cat_apartados_firma.apartado_firma == 'url'){
                 configFirma(config.color_letra,config.estilo_letra,config.tamanio_letra,'link-indep')
-            }
+            } */
         }
     
 }
@@ -37,7 +37,7 @@ async function datosConfig(){
 datosConfig();
 
 function configFirma(color_letra, estilo_letra,tamanio_letra,id_texto){
-    console.log(color_letra, estilo_letra,tamanio_letra);
+    console.log(id_texto,color_letra, estilo_letra,tamanio_letra);
     const text =document.getElementById(id_texto);
     text.style.color= color_letra;
     text.style.fontSize = `${tamanio_letra}px`;
@@ -50,6 +50,7 @@ function configFirma(color_letra, estilo_letra,tamanio_letra,id_texto){
 async function imagenFirmaActiva(){
     const imgCarFirma = document.getElementById('img_card');
     const imgFirma = document.getElementById('imagen_firma');
+    const imgFirmaVista = document.getElementById('imagen_firma_vista');
     const containerImg = document.getElementById('imageContainer');
     const url = "/configuracion/fileActivo"
             const response = await fetch(url,{
@@ -61,6 +62,8 @@ async function imagenFirmaActiva(){
     
         const data = await response.json();
         imgFirma.src =`/${data.archivo[0].ruta_archivo}`
+        imgFirmaVista.src =`/${data.archivo[0].ruta_archivo}`
+/*         imgFirma.style.width = "615px"; */
         console.log(data);
 }
 
