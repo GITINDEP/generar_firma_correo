@@ -166,7 +166,7 @@ async function fechData(url,metodo,body=null){
             }
             const response = await fetch(url,configuracionFetch); 
             const data = await response.json();
-            console.log('data',data);
+  /*           console.log('data',data); */
             return data;
 
         } catch (error) {
@@ -300,8 +300,18 @@ async function addConfiguracion(){
             if(response.ok){
                 const data = await response.json();
                 clearForm()
-                window.location.reload();
-                console.log(data);
+            $.alert({
+                title: "Success",
+                content: `<strong>Configuración agregada correctamente</strong>`,
+                theme: 'modern',
+                icon: 'fa-solid fa-triangle-info',
+                type: "blue",
+                buttons:{
+                    ok:function(){
+                        window.location.reload();
+                    }
+                }
+            });
             }else{
             $.alert({
                 title: "Advertencia",
@@ -345,8 +355,19 @@ async function activar(id,id_apartado){
         });
         if(response.ok){
             const data = await response.json();
-            console.log(data);
-            window.location.reload();
+     /*        console.log(data); */
+            $.alert({
+                title: "Success",
+                content: `<strong>Configuración agregada correctamente</strong>`,
+                theme: 'modern',
+                icon: 'fa-solid fa-triangle-info',
+                type: "blue",
+                buttons:{
+                    ok:function(){
+                        window.location.reload();
+                    }
+                }
+            });
         }
     } catch (error) {
         console.error(error)
@@ -369,8 +390,19 @@ async function activarImage(id){
         });
         if(response.ok){
             const data = await response.json();
-            console.log(data);
-            window.location.reload();
+       /*      console.log(data); */
+            $.alert({
+                title: "Success",
+                content: `<strong>Imagen activada correctamente</strong>`,
+                theme: 'modern',
+                icon: 'fa-solid fa-triangle-info',
+                type: "blue",
+                buttons:{
+                    ok:function(){
+                        window.location.reload();
+                    }
+                }
+            });
         }
         
     } catch (error) {
@@ -405,11 +437,23 @@ async function agregarArchivo(){
             if(response.ok){
                 const data = await response.json();
                 quitarImagen('#imgPreview');
-                window.location.reload();
+
+            $.alert({
+                title: "Success",
+                content: `<strong>Imagen agregada correctamente</strong>`,
+                theme: 'modern',
+                icon: 'fa-solid fa-triangle-info',
+                type: "blue",
+                buttons:{
+                    ok:function(){
+                        window.location.reload();
+                    }
+                }
+            });
             }
         
-    
-            console.log(data);
+/*     
+            console.log(data); */
         }
         
     } catch (error) {

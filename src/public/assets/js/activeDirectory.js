@@ -4,6 +4,20 @@ async function vaidateAD(){
         let pass = document.getElementById('password').value; 
         const url = '/login';
         $('#lockscreen').fadeIn();
+
+        const regex = /^(?:[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ]+|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
+
+        if(!regex.test(user)){
+            $('#lockscreen').fadeOut();
+            $.alert({
+                title: "Advertencia",
+                content: `<strong>Usuario/Correo no valido</strong>`,
+                theme: 'modern',
+                icon: 'fa-solid fa-triangle-exclamation',
+                type: "red"
+            });
+            return;
+        }
 /*         let spinner = document.querySelector('.spinner');
         spinner.style.visibility = 'hidden'; */
         const  response = await fetch(url,{

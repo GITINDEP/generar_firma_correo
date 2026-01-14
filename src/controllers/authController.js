@@ -102,8 +102,10 @@ function loginAD(req, res){
                                                    area: dataFirma[0].AreaDesc,
                                                    puesto: dataFirma[0].PuestoDesc,
                                                    correo: dataFirma[0].Correo,
-                                                   telefono:"55 1719 1600",
+                                                   telefono:"(55) 1719 1600",
                                                    ext: dataFirma[0].Ext,
+                                                   direccion_ejecutiva:dataFirma[0].DireccionEjecutiva,
+                                                   direccion_corporativa: dataFirma[0].DireccionCorporativa,
                                                    token:token,
                                                    admin:admin
                                                };

@@ -24,7 +24,8 @@ async function datosConfig(){
             }else if(config.cat_apartados_firma.apartado_firma == 'Teléfono'){
                 configFirma(config.color_letra,config.estilo_letra,config.tamanio_letra,'text-telefono')
             }else if(config.cat_apartados_firma.apartado_firma == 'Texto hacienda'){
-                configFirma(config.color_letra,config.estilo_letra,config.tamanio_letra,'text-hacienda')
+                configFirma(config.color_letra,config.estilo_letra,config.tamanio_letra,'text-hacienda');
+                configFirma(config.color_letra,config.estilo_letra,config.tamanio_letra,'text-indep')
             }else if(config.cat_apartados_firma.apartado_firma == 'Subdirección'){
                 configFirma(config.color_letra,config.estilo_letra,config.tamanio_letra,'text-subdireccion')
             }/* else if(config.cat_apartados_firma.apartado_firma == 'url'){
@@ -63,8 +64,7 @@ async function imagenFirmaActiva(){
         const data = await response.json();
         imgFirma.src =`/${data.archivo[0].ruta_archivo}`
         imgFirmaVista.src =`/${data.archivo[0].ruta_archivo}`
-/*         imgFirma.style.width = "615px"; */
-        console.log(data);
+        
 }
 
 imagenFirmaActiva();

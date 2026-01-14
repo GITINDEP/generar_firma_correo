@@ -1,7 +1,7 @@
 <%- include('partials/head') %>
 
 
-<div class="container mt-4">
+<div class="container shadow-lg p-3 mb-5 bg-body-tertiary rounded mt-4">
     <div class="row">
         <div class="col-sm-12 col-md-6">
             <div class="card">
@@ -10,38 +10,23 @@
             </div>
             <div class="card-body">
             <div class="alert alert-warning" role="alert">
-                <strong>Nota:</strong>: Los campos de Dirección General, Subdirección y Puesto ser editados.
+                <strong>Nota:</strong> Los campos son editables <span style="color: red; font-weight: 800; font-size: 20px;">*</span>
             </div>
     <form action="" class="mt-4">
         <div class="row">
             <div class="col-sm-12 col-md-12 mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="nombre_firma" name="nombre_firma"placeholder="Nombre Completo" value="<%=usuario.nombre%>" readonly>
-                    <label for="floatingPassword">Nombre Completo:</label>
+                    <input type="text" class="form-control" id="nombre_firma" name="nombre_firma"placeholder="Nombre Completo" value="<%=usuario.nombre%>" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                    <input type="text" class="form-control" id="nombre_firma_hidden" name="nombre_firma_hidden" placeholder="Nombre Completo" value="<%=usuario.nombre%>" readonly style="display:none;">
+                    <label for="floatingPassword">Nombre Completo:<span style="color: red; font-weight: 800; font-size: 20px;">*</span></label>
                 </div>
             </div>
-
-            <div class="col-sm-12 col-md-12 mb-3">
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="direccion_firma" name="direccion_firma" placeholder="Dirección General" value="<%=usuario.area%>" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
-                    <input type="text" class="form-control" id="direccion_firma_hidden" name="direccion_firma_hidden" placeholder="Puesto" value="<%=usuario.area%>" readonly style="display:none;">
-                    <label for="floatingPassword">Dirección General:</label>
-                </div>
-            </div>
-
-            <div class="col-sm-12 col-md-12 mb-3">
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="subdireccion_firma" name="subdireccion_firma" placeholder="Subdirección" value="" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
-                    <label for="floatingPassword">Subdirección:</label>
-                </div>
-            </div>
-
 
             <div class="col-sm-12 col-md-12 mb-3">
                 <div class="form-floating">
                     <input type="text" class="form-control" id="puesto_firma" name="puesto_firma" placeholder="Puesto" value="<%=usuario.puesto%>" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" >
                     <input type="text" class="form-control" id="puesto_firma_hidden" name="puesto_firma_hidden" placeholder="Puesto" value="<%=usuario.puesto%>" readonly style="display:none;">
-                    <label for="floatingPassword">Puesto:</label>
+                    <label for="floatingPassword">Puesto:<span style="color: red; font-weight: 800; font-size: 20px;">*</span></label>
                 </div>
             </div>
 
@@ -59,13 +44,30 @@
                 </div>
             </div>
 
-             <div class="col-sm-12 col-md-3 mb-3">
+             <div class="col-sm-12 col-md-6 mb-3">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingPassword" placeholder="Extensión" value="<%=usuario.ext%>" readonly>
-                    <label for="floatingPassword">Ext:</label>
+                    <input type="text" class="form-control" id="extension_firma" placeholder="Extensión" value="<%=usuario.ext%>" >
+                    <input type="text" class="form-control" id="extension_firma_hidden" name="extension_firma_hidden" placeholder="Extensión" value="<%=usuario.ext%>" readonly style="display:none;">
+                    <label for="floatingPassword">Ext:<span style="color: red; font-weight: 800; font-size: 20px;">*</span></label>
                 </div>
             </div>
+
             <div class="col-sm-12 col-md-12 mb-3">
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="direccion_firma" name="direccion_firma" placeholder="Dirección General" value="<%=usuario.direccion_corporativa%>" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                    <input type="text" class="form-control" id="direccion_firma_hidden" name="direccion_firma_hidden" placeholder="Puesto" value="<%=usuario.direccion_corporativa%>" readonly style="display:none;">
+                    <label for="floatingPassword">Dirección Corporativa:<span style="color: red; font-weight: 800; font-size: 20px;">*</span></label>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-12 mb-3">
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="subdireccion_firma" name="subdireccion_firma" placeholder="Subdirección" value="<%=usuario.direccion_ejecutiva%>" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                    <input type="text" class="form-control" id="subdireccion_firma_hidden" name="subdireccion_firma_hidden" placeholder="Subdirección" value="<%=usuario.direccion_ejecutiva%>" readonly style="display:none;">    
+                    <label for="floatingPassword">Dirección Ejecutiva:<span style="color: red; font-weight: 800; font-size: 20px;">*</span></label>
+                </div>
+            </div>
+<!--             <div class="col-sm-12 col-md-12 mb-3">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="checkComision" name="checkComision" onchange="checkboxComision()">
                     <label class="form-check-label" for="checkComision">
@@ -87,7 +89,7 @@
                     <input type="text" class="form-control" id="area_comision" name="area_comision" placeholder="Área de Adscripción" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                     <label for="floatingPassword">Área de Adscripción:</label>
                 </div>
-            </div>
+            </div> -->
         </div>
     </form>
             </div>
@@ -204,7 +206,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="modalFirma" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-tablet-fullscreen">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Vista Previa de Firma</h1>
@@ -231,19 +233,27 @@
                             Correo Electrónico: <%=usuario.correo%>
                         </div>
                        
-                        <div class="col-md-12 text-telefono" id="text-telefono">
-                                Tel:01 <%=usuario.telefono%>   Ext: <%=usuario.ext%>
+                        <div style="grid-template-columns: 1fr 1fr;" class="col-md-12 text-telefono d-grid gap-0 column-gap-1 " id="text-telefono">
+                            <div id="text-tel" >
+                                Tel:01 <%=usuario.telefono%> 
+                            </div>
+                            <div id="text-extension">
+                                Ext: <%=usuario.ext%>
+                            </div>
                         </div>
 
                         <div class="col-md-12 text-hacienda" id="text-hacienda">
                             Secretaría de Hacienda y Crédito Público
                         </div>
+                        <div class="col-md-12 text-indep" id="text-indep">
+                            Instituto para Devolver al Pueblo lo Robado
+                        </div>
             
                         <div class=" col-md-12 text-direccion-gral" id="text-direccion-gral">
-                            <%=usuario.area%>
+                            <%=usuario.direccion_corporativa%>
                         </div>
                          <div class="col-md-12 text-subdireccion" id="text-subdireccion">
-                            
+                            <%=usuario.direccion_ejecutiva%>
                         </div>
 <!--                         <div class="col-md-12 text-indep" id="text-indep">
                             Instituto para Devolver al Pueblo lo Robado
